@@ -1,25 +1,9 @@
 // Imports
 import * as _ from 'underscore';
 import { Types } from '../../shared/js/gametypes';
-
-// This file defines the structure of the data for each message type.
-interface IEntity {
-    id: number;
-    getState(): any[];
-    x: number;
-    y: number;
-}
-
-interface IItem {
-    id: number;
-    kind: number;
-}
-
-interface IMob {
-    id: number;
-    kind: number;
-    hatelist: { id: number }[];
-}
+import { Entity } from './Entity';
+import { Item } from './Item';
+import { Mob } from './Mob';
 
 interface IPlayer {
     id: number;
@@ -53,8 +37,8 @@ export namespace Messages {
     type BlinkMessageData = [messageType: Types.Messages.BLINK, itemId: number];
 
     export class Spawn extends Message<SpawnMessageData> {
-        private entity: IEntity;
-        constructor(entity: IEntity) {
+        private entity: Entity;
+        constructor(entity: Entity) {
             super();
             this.entity = entity;
         }
@@ -76,8 +60,8 @@ export namespace Messages {
     }
 
     export class Move extends Message<MoveMessageData> {
-        private entity: IEntity;
-        constructor(entity: IEntity) {
+        private entity: Entity;
+        constructor(entity: Entity) {
             super();
             this.entity = entity;
         }
@@ -87,9 +71,9 @@ export namespace Messages {
     }
 
     export class LootMove extends Message<LootMoveMessageData> {
-        private entity: IEntity;
-        private item: IItem;
-        constructor(entity: IEntity, item: IItem) {
+        private entity: Entity;
+        private item: Item;
+        constructor(entity: Entity, item: Item) {
             super();
             this.entity = entity;
             this.item = item;
@@ -154,9 +138,9 @@ export namespace Messages {
     }
 
     export class Drop extends Message<DropMessageData> {
-        private mob: IMob;
-        private item: IItem;
-        constructor(mob: IMob, item: IItem) {
+        private mob: Mob;
+        private item: Item;
+        constructor(mob: Mob, item: Item) {
             super();
             this.mob = mob;
             this.item = item;
@@ -181,8 +165,8 @@ export namespace Messages {
     }
 
     export class Teleport extends Message<TeleportMessageData> {
-        private entity: IEntity;
-        constructor(entity: IEntity) {
+        private entity: Entity;
+        constructor(entity: Entity) {
             super();
             this.entity = entity;
         }
@@ -192,9 +176,9 @@ export namespace Messages {
     }
 
     export class Damage extends Message<DamageMessageData> {
-        private entity: IEntity;
+        private entity: Entity;
         private points: number;
-        constructor(entity: IEntity, points: number) {
+        constructor(entity: Entity, points: number) {
             super();
             this.entity = entity;
             this.points = points;
@@ -218,8 +202,8 @@ export namespace Messages {
     }
 
     export class Kill extends Message<KillMessageData> {
-        private mob: IMob;
-        constructor(mob: IMob) {
+        private mob: Mob;
+        constructor(mob: Mob) {
             super();
             this.mob = mob;
         }
@@ -240,8 +224,8 @@ export namespace Messages {
     }
 
     export class Destroy extends Message<DestroyMessageData> {
-        private entity: IEntity;
-        constructor(entity: IEntity) {
+        private entity: Entity;
+        constructor(entity: Entity) {
             super();
             this.entity = entity;
         }
@@ -251,8 +235,8 @@ export namespace Messages {
     }
 
     export class Blink extends Message<BlinkMessageData> {
-        private item: IItem;
-        constructor(item: IItem) {
+        private item: Item;
+        constructor(item: Item) {
             super();
             this.item = item;
         }
