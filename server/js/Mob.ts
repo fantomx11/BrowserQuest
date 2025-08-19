@@ -5,7 +5,7 @@ import { Properties } from "./Properties";
 import { Utils } from "./Utils";
 import { Item } from "./Item";
 import { MobArea } from "./Mobarea";
-import { ChestArea } from "./Chestarea";
+import { ChestArea } from "./ChestArea";
 import * as _ from "underscore";
 
 // Interfaces for better type safety and clarity

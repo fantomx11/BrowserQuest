@@ -7,7 +7,7 @@ import { Npc } from './Npc';
 import { Player } from './Player';
 import { Item } from './Item';
 import { MobArea } from './Mobarea';
-import { ChestArea } from './Chestarea';
+import { ChestArea } from './ChestArea';
 import { Chest } from './Chest';
 import { Messages } from './Message';
 import { Properties } from './Properties';
